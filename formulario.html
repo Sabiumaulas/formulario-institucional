@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Información institucional - Sabium</title>
+  <link rel="stylesheet" href="style.css"/>
+
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">
+        <img src="img/ISOTIPO_ISOTIPO.png" alt="Sabium" style="width:50px; height:50px; object-fit:contain; filter: drop-shadow(0 0 1px rgba(0,0,0,.25));"/>
+      </div>
+      <div>
+        <h1>Información institucional – Sabium</h1>
+        <p>Gracias por tu interés en Sabium! 😊 <br>
+            Este formulario nos permite conocer brevemente la realidad de tu institución para preparar la reunión y avanzar con una propuesta adecuada. 
+            Completarlo no te lleva más de unos minutos.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="topbar">Formulario institucional</div>
+      <div class="content">
+
+        <div class="progress">
+          <div id="stepLabel">Paso 1 de 3</div>
+          <div class="bar"><div id="barFill"></div></div>
+        </div>
+
+        <form id="f">
+          <!-- STEP 1 -->
+          <section class="step active" data-step="1">
+            <div class="q">
+              <label class="title">Correo electrónico *</label>
+              <input type="email" name="email" required placeholder="Tu dirección de correo electrónico"/>
+              <div class="err" data-err-for="email">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Nombre y Apellido *</label>
+              <input type="text" name="nombre_apellido" required placeholder="Tu respuesta"/>
+              <div class="err" data-err-for="nombre_apellido">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Nombre de la institución *</label>
+              <input type="text" name="institucion" required placeholder="Tu respuesta"/>
+              <div class="err" data-err-for="institucion">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="row">
+              <div class="q">
+                <label class="title">País *</label>
+                <input type="text" name="pais" required placeholder="Tu respuesta"/>
+                <div class="err" data-err-for="pais">Este dato es obligatorio.</div>
+              </div>
+              <div class="q">
+                <label class="title">Provincia/Departamento y localidad *</label>
+                <input type="text" name="provincia_departamento_localidad" required placeholder="Tu respuesta"/>
+                <div class="err" data-err-for="provincia_departamento_localidad">Este dato es obligatorio.</div>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button type="button" class="btn-primary" id="next1">Siguiente</button>
+            </div>
+          </section>
+
+          <!-- STEP 2 -->
+          <section class="step" data-step="2">
+            <div class="q">
+              <label class="title">Cargo *</label>
+              <div class="choices">
+                <label class="pill"><input type="radio" name="cargo" value="Equipo Directivo" required> Equipo Directivo</label>
+                <label class="pill"><input type="radio" name="cargo" value="Docente" required> Docente</label>
+                <label class="pill"><input type="radio" name="cargo" value="Coordinador de área" required> Coordinador de área</label>
+                <label class="pill"><input type="radio" name="cargo" value="Otros" required> Otros</label>
+              </div>
+              <div class="hint">Si elegís “Otros”, completá el campo debajo.</div>
+              <input type="text" name="cargo_otro" placeholder="Especificar (solo si corresponde)"/>
+              <div class="err" data-err-for="cargo">Este dato es obligatorio.</div>
+              <div class="err" data-err-for="cargo_otro">Por favor, especificá el cargo.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Tipo de institución *</label>
+              <div class="choices">
+                <label class="pill"><input type="radio" name="tipo_institucion" value="Privada" required> Privada</label>
+                <label class="pill"><input type="radio" name="tipo_institucion" value="Pública" required> Pública</label>
+                <label class="pill"><input type="radio" name="tipo_institucion" value="Privada con aporte estatal" required> Privada con aporte estatal</label>
+              </div>
+              <div class="err" data-err-for="tipo_institucion">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Niveles educativos *</label>
+              <div class="choices">
+                <label class="pill"><input type="checkbox" name="niveles" value="Inicial"> Inicial</label>
+                <label class="pill"><input type="checkbox" name="niveles" value="Primario"> Primario</label>
+                <label class="pill"><input type="checkbox" name="niveles" value="Secundario"> Secundario</label>
+                <label class="pill"><input type="checkbox" name="niveles" value="Terciario/Superior"> Terciario/Superior</label>
+                <label class="pill"><input type="checkbox" name="niveles" value="Otros"> Otros</label>
+              </div>
+              <input type="text" name="niveles_otro" placeholder="Especificar (solo si corresponde)"/>
+              <div class="err" data-err-for="niveles">Seleccioná al menos una opción.</div>
+              <div class="err" data-err-for="niveles_otro">Por favor, especificá “Otros”.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Turnos *</label>
+              <div class="choices">
+                <label class="pill"><input type="checkbox" name="turnos" value="Mañana"> Turno Mañana</label>
+                <label class="pill"><input type="checkbox" name="turnos" value="Tarde"> Turno Tarde</label>
+                <label class="pill"><input type="checkbox" name="turnos" value="Noche"> Turno Noche</label>
+                <label class="pill"><input type="checkbox" name="turnos" value="Otros"> Otros</label>
+              </div>
+              <input type="text" name="turnos_otro" placeholder="Especificar (solo si corresponde)"/>
+              <div class="err" data-err-for="turnos">Seleccioná al menos una opción.</div>
+              <div class="err" data-err-for="turnos_otro">Por favor, especificá “Otros”.</div>
+            </div>
+
+            <div class="actions">
+              <button type="button" class="btn-secondary" id="back2">Atrás</button>
+              <button type="button" class="btn-primary" id="next2">Siguiente</button>
+            </div>
+          </section>
+
+          <!-- STEP 3 -->
+          <section class="step" data-step="3">
+            <div class="q">
+              <label class="title">Cantidad de divisiones por curso *</label>
+              <input type="number" name="divisiones_por_curso" min="1" required placeholder="Ej: 2"/>
+              <div class="err" data-err-for="divisiones_por_curso">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Cantidad de alumnos por curso *</label>
+              <div class="choices">
+                <label class="pill"><input type="radio" name="alumnos_por_curso" value="Menos de 15" required> Menos de 15</label>
+                <label class="pill"><input type="radio" name="alumnos_por_curso" value="Entre 15 y 25" required> Entre 15 y 25</label>
+                <label class="pill"><input type="radio" name="alumnos_por_curso" value="Entre 26 y 35" required> Entre 26 y 35</label>
+                <label class="pill"><input type="radio" name="alumnos_por_curso" value="Más de 35" required> Más de 35</label>
+              </div>
+              <div class="err" data-err-for="alumnos_por_curso">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">Cantidad de docentes *</label>
+              <div class="choices">
+                <label class="pill"><input type="radio" name="docentes" value="Menos de 20" required> Menos de 20</label>
+                <label class="pill"><input type="radio" name="docentes" value="20-50" required> 20-50</label>
+                <label class="pill"><input type="radio" name="docentes" value="50-100" required> 50-100</label>
+                <label class="pill"><input type="radio" name="docentes" value="Más de 100" required> Más de 100</label>
+              </div>
+              <div class="err" data-err-for="docentes">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="q">
+              <label class="title">¿Participará un directivo en la reunión? *</label>
+              <div class="choices">
+                <label class="pill"><input type="radio" name="participa_directivo" value="Sí" required> Sí</label>
+                <label class="pill"><input type="radio" name="participa_directivo" value="No"> No</label>
+              </div>
+              <div class="error" id="directivoError" style="display:none;">
+                Para poder realizar la reunión, es necesario que participe al menos un directivo.
+              </div>
+              <div class="err" data-err-for="participa_directivo">Este dato es obligatorio.</div>
+            </div>
+
+            <div class="actions">
+              <button type="button" class="btn-secondary" id="back3">Atrás</button>
+              <button type="submit" class="btn-primary" id="submitBtn">Enviar</button>
+            </div>
+
+            <div class="loading" id="loading">Enviando…</div>
+          </section>
+        </form>
+
+        <!-- THANK YOU -->
+        <section class="step" id="thanksStep">
+          <div class="thanks">
+            <img src="img/LOGO.png" alt="Sabium2" style="width:300px; height:86,7px; filter: drop-shadow(0 0 1px rgba(0,0,0,.25)); "/>
+            <h2>¡Gracias! ✅</h2>
+            <p>Registramos la información de tu institución. Para avanzar con la propuesta, coordinamos una reunión breve, donde analizamos la realidad institucional y resolvemos consultas. <br>
+                Podés elegir el día y horario que les resulte más conveniente desde el botón.</p>
+            <div class="cta">
+              <a class="primary" id="meetingBtn" href="https://calendar.app.google/HNyue6BYVhpkneyp8" target="_blank" rel="noopener">Agendar reunión</a>
+              <a class="secondary" id="copyBtn" href="#">Copiar link</a>
+              <div class="small">Si no podés agendar ahora, podés hacerlo más tarde con el mismo enlace.</div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+  /** CONFIG **/
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby4xWHKE2XLtZVA5FUpJruFYpZlwFGn71EeA53Oj_OsmWt2Bosg42oon3xywNu-DqzjwQ/exec"; // <-- pegá acá tu webapp
+  const STORAGE_KEY = "sabium_form_draft_v1";
+
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+  const steps = $$(".step[data-step]");
+  const thanksStep = $("#thanksStep");
+  const stepLabel = $("#stepLabel");
+  const barFill = $("#barFill");
+
+  function setProgress(step){
+    stepLabel.textContent = `Paso ${step} de 3`;
+    barFill.style.width = `${(step/3)*100}%`;
+  }
+
+  function showStep(n){
+    steps.forEach(s => s.classList.remove("active"));
+    thanksStep.classList.remove("active");
+    $(`.step[data-step="${n}"]`).classList.add("active");
+    setProgress(n);
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  function showThanks(meetingUrl){
+    steps.forEach(s => s.classList.remove("active"));
+    thanksStep.classList.add("active");
+    $("#meetingBtn").href = meetingUrl || "#";
+    $("#copyBtn").onclick = (e) => {
+      e.preventDefault();
+      if (!meetingUrl) return;
+      navigator.clipboard.writeText(meetingUrl);
+      $("#copyBtn").textContent = "Link copiado ✅";
+      setTimeout(()=> $("#copyBtn").textContent = "Copiar link", 1600);
+    };
+  }
+
+  function showErr(name, show){
+    const el = document.querySelector(`[data-err-for="${name}"]`);
+    if (!el) return;
+    el.classList.toggle("show", !!show);
+  }
+
+  function getCheckedValues(name){
+    return $$(`input[name="${name}"]:checked`).map(i => i.value);
+  }
+
+  function getRadioValue(name){
+    const el = $(`input[name="${name}"]:checked`);
+    return el ? el.value : "";
+  }
+
+  function draftSave(){
+    const f = $("#f");
+    const data = formToPayload(f);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  }
+
+  function draftLoad(){
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    let d;
+    try { d = JSON.parse(raw); } catch { return; }
+
+    // set basic inputs
+    for (const [k,v] of Object.entries(d)){
+      const field = document.querySelector(`[name="${k}"]`);
+      if (!field) continue;
+
+      if (Array.isArray(v)){
+        v.forEach(val=>{
+          const chk = document.querySelector(`input[name="${k}"][value="${val}"]`);
+          if (chk) chk.checked = true;
+        });
+      } else {
+        // radios handled below
+        if (field.type === "radio" || field.type === "checkbox") continue;
+        field.value = v;
+      }
+    }
+
+    // radios
+    ["cargo","tipo_institucion","alumnos_por_curso","docentes","participa_directivo"].forEach(name=>{
+      const val = d[name];
+      if (!val) return;
+      const r = document.querySelector(`input[name="${name}"][value="${val}"]`);
+      if (r) r.checked = true;
+    });
+
+    // checkboxes
+    ["niveles","turnos"].forEach(name=>{
+      const vals = d[name];
+      if (!Array.isArray(vals)) return;
+      vals.forEach(val=>{
+        const c = document.querySelector(`input[name="${name}"][value="${val}"]`);
+        if (c) c.checked = true;
+      });
+    });
+
+    toggleConditionalHints();
+  }
+
+  function toggleConditionalHints(){
+    const cargo = getRadioValue("cargo");
+    showErr("cargo_otro", false);
+    // show hint requirement only if "Otros"
+    const cargoOtro = document.querySelector(`input[name="cargo_otro"]`);
+    cargoOtro.required = (cargo === "Otros");
+
+    const niveles = getCheckedValues("niveles");
+    const nivelesOtro = document.querySelector(`input[name="niveles_otro"]`);
+    nivelesOtro.required = niveles.includes("Otros");
+
+    const turnos = getCheckedValues("turnos");
+    const turnosOtro = document.querySelector(`input[name="turnos_otro"]`);
+    turnosOtro.required = turnos.includes("Otros");
+
+    const directivo = getRadioValue("participa_directivo");
+    $("#directivoError").style.display = (directivo === "No") ? "block" : "none";
+  }
+
+  function formToPayload(form){
+    const fd = new FormData(form);
+    const payload = {};
+    // simple fields
+    ["email","nombre_apellido","institucion","pais","provincia_departamento_localidad",
+     "cargo_otro","niveles_otro","turnos_otro","divisiones_por_curso"].forEach(k=>{
+      payload[k] = (fd.get(k) || "").toString().trim();
+    });
+
+    payload.cargo = getRadioValue("cargo");
+    payload.tipo_institucion = getRadioValue("tipo_institucion");
+    payload.alumnos_por_curso = getRadioValue("alumnos_por_curso");
+    payload.docentes = getRadioValue("docentes");
+    payload.participa_directivo = getRadioValue("participa_directivo");
+
+    payload.niveles = getCheckedValues("niveles");
+    payload.turnos = getCheckedValues("turnos");
+
+    // UTM (optional)
+    const url = new URL(location.href);
+    payload.utm_source = url.searchParams.get("utm_source") || "";
+    payload.utm_medium = url.searchParams.get("utm_medium") || "";
+    payload.utm_campaign = url.searchParams.get("utm_campaign") || "";
+    payload.user_agent = navigator.userAgent;
+
+    return payload;
+  }
+
+  function validateStep(stepNum){
+    let ok = true;
+    toggleConditionalHints();
+
+    if (stepNum === 1){
+      ["email","nombre_apellido","institucion","pais","provincia_departamento_localidad"].forEach(name=>{
+        const v = $(`[name="${name}"]`).value.trim();
+        const isValid = v.length > 0 && (name !== "email" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+        showErr(name, !isValid);
+        ok = ok && isValid;
+      });
+    }
+
+    if (stepNum === 2){
+      const cargo = getRadioValue("cargo");
+      const tipo = getRadioValue("tipo_institucion");
+      const niveles = getCheckedValues("niveles");
+      const turnos = getCheckedValues("turnos");
+
+      showErr("cargo", !cargo); ok = ok && !!cargo;
+      showErr("tipo_institucion", !tipo); ok = ok && !!tipo;
+
+      showErr("niveles", niveles.length === 0); ok = ok && niveles.length > 0;
+      showErr("turnos", turnos.length === 0); ok = ok && turnos.length > 0;
+
+      if (cargo === "Otros"){
+        const v = $(`[name="cargo_otro"]`).value.trim();
+        const isValid = v.length > 0;
+        showErr("cargo_otro", !isValid);
+        ok = ok && isValid;
+      }
+
+      if (niveles.includes("Otros")){
+        const v = $(`[name="niveles_otro"]`).value.trim();
+        const isValid = v.length > 0;
+        showErr("niveles_otro", !isValid);
+        ok = ok && isValid;
+      }
+
+      if (turnos.includes("Otros")){
+        const v = $(`[name="turnos_otro"]`).value.trim();
+        const isValid = v.length > 0;
+        showErr("turnos_otro", !isValid);
+        ok = ok && isValid;
+      }
+    }
+
+    if (stepNum === 3){
+      const div = $(`[name="divisiones_por_curso"]`).value.trim();
+      const a = getRadioValue("alumnos_por_curso");
+      const d = getRadioValue("docentes");
+      const dir = getRadioValue("participa_directivo");
+
+      const divOk = div !== "" && Number(div) >= 1;
+      showErr("divisiones_por_curso", !divOk); ok = ok && divOk;
+
+      showErr("alumnos_por_curso", !a); ok = ok && !!a;
+      showErr("docentes", !d); ok = ok && !!d;
+      showErr("participa_directivo", !dir); ok = ok && !!dir;
+    }
+
+    return ok;
+  }
+
+  // Navigation buttons
+  $("#next1").onclick = () => { if (validateStep(1)) { draftSave(); showStep(2); } };
+  $("#back2").onclick = () => { draftSave(); showStep(1); };
+  $("#next2").onclick = () => { if (validateStep(2)) { draftSave(); showStep(3); } };
+  $("#back3").onclick = () => { draftSave(); showStep(2); };
+
+  // Live draft save & conditional hints
+  $("#f").addEventListener("input", () => { toggleConditionalHints(); draftSave(); });
+  $("#f").addEventListener("change", () => { toggleConditionalHints(); draftSave(); });
+
+  // Submit
+  $("#f").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!validateStep(3)) return;
+
+    $("#submitBtn").disabled = true;
+    $("#loading").classList.add("show");
+
+    const payload = formToPayload($("#f"));
+
+    try {
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type":"text/plain;charset=utf-8" }, // Apps Script-friendly
+        body: JSON.stringify(payload)
+      });
+
+      const json = await res.json().catch(()=> ({}));
+      if (!json.ok) throw new Error(json.error || "No se pudo enviar.");
+
+      localStorage.removeItem(STORAGE_KEY);
+      showThanks(json.meeting_url);
+
+    } catch (err) {
+      alert("No pudimos enviar el formulario. Por favor, intentá nuevamente.\n\n" + err.message);
+      $("#submitBtn").disabled = false;
+      $("#loading").classList.remove("show");
+    }
+  });
+
+  // init
+  draftLoad();
+  toggleConditionalHints();
+  setProgress(1);
+
+  
+  const form = document.querySelector("form"); // o tu id: document.getElementById("tuFormId")
+  const radios = document.querySelectorAll('input[name="participa_directivo"]');
+  const msg = document.getElementById("directivoMsg");
+
+  if (!form) console.warn("No se encontró <form>. Revisá el selector.");
+  if (radios.length === 0) console.warn("No se encontraron radios 'participa_directivo'. Revisá el name.");
+
+  function validateDirectivo() {
+    const selected = document.querySelector('input[name="participa_directivo"]:checked');
+
+    // si no eligió nada todavía, dejamos que required haga su trabajo
+    if (!selected) {
+      radios.forEach(r => r.setCustomValidity(""));
+      if (msg) msg.style.display = "none";
+      return true;
+    }
+
+    if (selected.value === "No") {
+      // Bloquea el envío como si fuera un required incumplido
+      radios.forEach(r => r.setCustomValidity("Para enviar, debe participar un directivo."));
+      if (msg) msg.style.display = "block";
+      return false;
+    }
+
+    // selected.value === "Si"
+    radios.forEach(r => r.setCustomValidity(""));
+    if (msg) msg.style.display = "none";
+    return true;
+  }
+
+  // valida cuando cambian la selección
+  radios.forEach(r => r.addEventListener("change", validateDirectivo));
+
+  // valida al enviar
+  form?.addEventListener("submit", function(e) {
+    const ok = validateDirectivo();
+    if (!ok) {
+      e.preventDefault();
+      // Esto muestra el tooltip nativo del navegador en el primer radio
+      radios[0].reportValidity();
+      msg?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  });
+
+</script>
+</body>
+</html>
