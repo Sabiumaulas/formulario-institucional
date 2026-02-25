@@ -196,3 +196,13 @@
   border-radius: 8px;
   border: 1px solid #ccc;
 }
+
+.thanks-logo{
+  display:block;
+  margin: 0 auto 18px;
+  height: auto;
+  width: min(320px, 85vw);   /* nunca más grande que 320px y se adapta al viewport */
+  max-width: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,.25));
+}
