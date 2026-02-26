@@ -434,23 +434,27 @@
 
     const payload = formToPayload($("#f"));
 
+    // Técnica infalible: Enviar datos vía URLSearchParams (como un formulario tradicional)
+    const params = new URLSearchParams();
+    // Metemos todo el JSON en un solo campo llamado 'formData'
+    params.append('formData', JSON.stringify(payload));
+
     try {
-      // Usamos fetch con modo 'no-cors' para saltar el bloqueo
+      // Usamos 'no-cors' y enviamos como formulario
       await fetch(SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors", 
-        headers: { "Content-Type": "text/plain" },
-        body: JSON.stringify(payload)
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString()
       });
 
-      // IMPORTANTE: Con 'no-cors' no podemos leer la respuesta (json.ok)
-      // Así que asumimos éxito si el código llega aquí sin ir al catch.
+      // Como es no-cors, no esperamos respuesta, saltamos directo al éxito
       localStorage.removeItem(STORAGE_KEY);
       showThanks("https://calendar.app.google/LL8T3LeLXQxt4mqJ9");
 
     } catch (err) {
-      console.error("Error detallado:", err);
-      alert("Hubo un error al enviar. Si el Excel no se actualiza, revisa la conexión.");
+      console.error("Error:", err);
+      alert("Error al conectar con el servidor.");
       $("#submitBtn").disabled = false;
       $("#loading").classList.remove("show");
     }
