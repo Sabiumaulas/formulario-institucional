@@ -188,7 +188,7 @@
             <p>Registramos la información de tu institución. Para avanzar con la propuesta, coordinamos una reunión breve, donde analizamos la realidad institucional y resolvemos consultas. <br>
                 Podés elegir el día y horario que les resulte más conveniente desde el botón.</p>
             <div class="cta">
-              <a class="primary" id="meetingBtn" href="https://calendar.app.google/LL8T3LeLXQxt4mqJ9" target="_blank" rel="noopener">Agendar reunión</a>
+              <a class="primary" id="meetingBtn" href="https://calendar.app.google/HNyue6BYVhpkneyp8" target="_blank" rel="noopener">Agendar reunión</a>
               <a class="secondary" id="copyBtn" href="#">Copiar link</a>
               <div class="small">Si no podés agendar ahora, podés hacerlo más tarde con el mismo enlace.</div>
             </div>
@@ -201,7 +201,7 @@
 
 <script>
   /** CONFIG **/
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz-iCASKyrXyDw2aJkUysvfgm07UyUawTL0OledqMqiLBlKyWx77g0ZYv9s-jh108jX7A/exec"; // <-- pegá acá tu webapp
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxZx-Bqjsl_f2mhnPgJMVm2JipEkoG7tzPAU2vdry0taC7ba8UzkO9ER4rDZ_yo897hpQ/exec"; // <-- pegá acá tu webapp
   const STORAGE_KEY = "sabium_form_draft_v1";
 
   const $ = (sel) => document.querySelector(sel);
@@ -434,27 +434,21 @@
 
     const payload = formToPayload($("#f"));
 
-    // Técnica infalible: Enviar datos vía URLSearchParams (como un formulario tradicional)
-    const params = new URLSearchParams();
-    // Metemos todo el JSON en un solo campo llamado 'formData'
-    params.append('formData', JSON.stringify(payload));
-
     try {
-      // Usamos 'no-cors' y enviamos como formulario
-      await fetch(SCRIPT_URL, {
+      const res = await fetch(SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString()
+        headers: { "Content-Type":"text/plain;charset=utf-8" }, // Apps Script-friendly
+        body: JSON.stringify(payload)
       });
 
-      // Como es no-cors, no esperamos respuesta, saltamos directo al éxito
+      const json = await res.json().catch(()=> ({}));
+      if (!json.ok) throw new Error(json.error || "No se pudo enviar.");
+
       localStorage.removeItem(STORAGE_KEY);
-      showThanks("https://calendar.app.google/LL8T3LeLXQxt4mqJ9");
+      showThanks(json.meeting_url);
 
     } catch (err) {
-      console.error("Error:", err);
-      alert("Error al conectar con el servidor.");
+      alert("No pudimos enviar el formulario. Por favor, intentá nuevamente.\n\n" + err.message);
       $("#submitBtn").disabled = false;
       $("#loading").classList.remove("show");
     }
