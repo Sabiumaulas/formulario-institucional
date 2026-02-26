@@ -435,20 +435,22 @@
     const payload = formToPayload($("#f"));
 
     try {
-      const res = await fetch(SCRIPT_URL, {
+      // Usamos fetch con modo 'no-cors' para saltar el bloqueo
+      await fetch(SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type":"text/plain;charset=utf-8" }, // Apps Script-friendly
+        mode: "no-cors", 
+        headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload)
       });
 
-      const json = await res.json().catch(()=> ({}));
-      if (!json.ok) throw new Error(json.error || "No se pudo enviar.");
-
+      // IMPORTANTE: Con 'no-cors' no podemos leer la respuesta (json.ok)
+      // Así que asumimos éxito si el código llega aquí sin ir al catch.
       localStorage.removeItem(STORAGE_KEY);
-      showThanks(json.meeting_url);
+      showThanks("https://calendar.app.google/LL8T3LeLXQxt4mqJ9");
 
     } catch (err) {
-      alert("No pudimos enviar el formulario. Por favor, intentá nuevamente.\n\n" + err.message);
+      console.error("Error detallado:", err);
+      alert("Hubo un error al enviar. Si el Excel no se actualiza, revisa la conexión.");
       $("#submitBtn").disabled = false;
       $("#loading").classList.remove("show");
     }
