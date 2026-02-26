@@ -4,7 +4,6 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Información institucional - Sabium</title>
-  <link rel="icon" href="img/ISOTIPO_ISOTIPO.ico" type="image/x-icon">
   <link rel="stylesheet" href="style.css"/>
 
 </head>
@@ -15,7 +14,7 @@
         <img src="img/ISOTIPO_ISOTIPO.png" alt="Sabium" style="width:50px; height:50px; object-fit:contain; filter: drop-shadow(0 0 1px rgba(0,0,0,.25));"/>
       </div>
       <div>
-        <h1>Información Institucional – Sabium</h1>
+        <h1>Información institucional – Sabium</h1>
         <p>Gracias por tu interés en Sabium! 😊 <br>
             Este formulario nos permite conocer brevemente la realidad de tu institución para preparar la reunión y avanzar con una propuesta adecuada. 
             Completarlo no te lleva más de unos minutos.</p>
@@ -23,7 +22,7 @@
     </div>
 
     <div class="card">
-      <div class="topbar">Formulario Institucional</div>
+      <div class="topbar">Formulario institucional</div>
       <div class="content">
 
         <div class="progress">
@@ -47,7 +46,7 @@
             </div>
 
             <div class="q">
-              <label class="title">Nombre de la Institución *</label>
+              <label class="title">Nombre de la institución *</label>
               <input type="text" name="institucion" required placeholder="Tu respuesta"/>
               <div class="err" data-err-for="institucion">Este dato es obligatorio.</div>
             </div>
@@ -87,7 +86,7 @@
             </div>
 
             <div class="q">
-              <label class="title">Tipo de Institución *</label>
+              <label class="title">Tipo de institución *</label>
               <div class="choices">
                 <label class="pill"><input type="radio" name="tipo_institucion" value="Privada" required> Privada</label>
                 <label class="pill"><input type="radio" name="tipo_institucion" value="Pública" required> Pública</label>
@@ -183,7 +182,7 @@
         <!-- THANK YOU -->
         <section class="step" id="thanksStep">
           <div class="thanks">
-            <img class="thanks-logo" src="img/LOGO.png" alt="Sabium2" />
+            <img src="img/LOGO.png" alt="Sabium2" style="width:300px; height:86,7px; filter: drop-shadow(0 0 1px rgba(0,0,0,.25)); "/>
             <h2>¡Gracias! ✅</h2>
             <p>Registramos la información de tu institución. Para avanzar con la propuesta, coordinamos una reunión breve, donde analizamos la realidad institucional y resolvemos consultas. <br>
                 Podés elegir el día y horario que les resulte más conveniente desde el botón.</p>
@@ -201,7 +200,7 @@
 
 <script>
   /** CONFIG **/
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx9vIDt5lS8w1Vi2FKogTk0KQ9uKfLbL-kZi8SuiH22WUjSf26qRYUIFQO-_eW28dhPjQ/exec"; // <-- pegá acá tu webapp
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw9JEqEJPqUpHwCrDVq3S7HthIsa7wwffvn7tvTZdL_jgFLBB74pr3O2vhlN-u_Gzb4zA/exec"; // <-- pegá acá tu webapp
   const STORAGE_KEY = "sabium_form_draft_v1";
 
   const $ = (sel) => document.querySelector(sel);
@@ -437,13 +436,15 @@
     try {
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type":"text/plain;charset=utf-8" }, // Apps Script-friendly
         body: JSON.stringify(payload)
       });
 
+      const json = await res.json().catch(()=> ({}));
+      if (!json.ok) throw new Error(json.error || "No se pudo enviar.");
+
       localStorage.removeItem(STORAGE_KEY);
-      showThanks("https://calendar.app.google/LL8T3LeLXQxt4mqJ9");
+      showThanks(json.meeting_url);
 
     } catch (err) {
       alert("No pudimos enviar el formulario. Por favor, intentá nuevamente.\n\n" + err.message);
