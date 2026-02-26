@@ -437,15 +437,13 @@
     try {
       const res = await fetch(SCRIPT_URL, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type":"text/plain;charset=utf-8" }, // Apps Script-friendly
         body: JSON.stringify(payload)
       });
 
-      const json = await res.json().catch(()=> ({}));
-      if (!json.ok) throw new Error(json.error || "No se pudo enviar.");
-
       localStorage.removeItem(STORAGE_KEY);
-      showThanks(json.meeting_url);
+      showThanks("https://calendar.app.google/LL8T3LeLXQxt4mqJ9");
 
     } catch (err) {
       alert("No pudimos enviar el formulario. Por favor, intentá nuevamente.\n\n" + err.message);
